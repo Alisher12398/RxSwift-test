@@ -74,5 +74,48 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="116.51785714285714"/>
         </scene>
+        <!--Second Example View Controller-->
+        <scene sceneID="iOB-Nq-ZdN">
+            <objects>
+                <viewController id="HUX-Fb-nOW" customClass="SecondExampleViewController" customModule="RxSwift_test1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="24A-9R-xUg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSD-gd-tkh">
+                                <rect key="frame" x="336" y="44" width="58" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Cities"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Yic-d1-Hw1"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLL-M3-ldR">
+                                <rect key="frame" x="87" y="470" width="70" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="NFP-E7-dEr"/>
+                                    <constraint firstAttribute="height" constant="70" id="tg2-af-ntc"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ZTq-Fu-VEO" appends="YES" id="5GE-OJ-tiJ"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3wb-v3-6Sd"/>
+                    </view>
+                    <connections>
+                        <outlet property="elementView" destination="BLL-M3-ldR" id="ca8-Ru-Ug0"/>
+                        <outlet property="toCitiesButton" destination="cSD-gd-tkh" id="DEg-nH-CCE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LoA-Ts-Yh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ZTq-Fu-VEO"/>
+            </objects>
+            <point key="canvasLocation" x="-765" y="117"/>
+        </scene>
     </scenes>
 </document>
