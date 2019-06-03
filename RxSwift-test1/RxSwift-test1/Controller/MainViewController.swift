@@ -28,22 +28,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         citiesTableView.delegate = self
         
         citiesSearchBar
-            .rx.text.subscribe(onNext : { [unowned self] (query) in
+            .rx.text
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .filter { $0!.count > 0 }
+            .subscribe(onNext : { [unowned self] (query) in
                 // Здесь мы подписываемся на каждое новое непустое значение (благодаря фильтру выше).
                 self.shownCities = self.allCities.filter { $0.hasPrefix(query!) } // Здесь мы выполняем "запрос к API", чтобы найти города
-                for city in self.shownCities {
-                    print(city)
-                }
                 self.citiesTableView.reloadData() // И перезагружаем данные таблицы
                 }) // Наблюдаемое свойство. Спасибо RxCocoa
             .disposed(by: disposeBag)
-//            .throttle(0.5, scheduler: MainScheduler.instance) // Ждать 0.5 секунд перед изменением
-//            .distinctUntilChanged() // Если они не появились, проверить что новое значение идентично старому
-//            .filter { $0!.characters.count > 0 } // Если новое значение действительно новое, фильтруем непустой запрос
-//            .subscribeNext { [unowned self] (query) in // Здесь мы подписываемся на каждое новое непустое значение (благодаря фильтру выше).
-//                self.shownCities = self.allCities.filter { $0.hasPrefix(query) } // Здесь мы выполняем "запрос к API", чтобы найти города
-//                self.tableView.reloadData() // И перезагружаем данные таблицы
-//            }
         
     }
     
