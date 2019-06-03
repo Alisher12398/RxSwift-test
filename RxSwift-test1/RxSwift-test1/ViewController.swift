@@ -94,30 +94,29 @@ class ViewController: UIViewController {
         
         //6 Filter
         print("Example 6:")
-        let publishSubject2 = PublishSubject<Int>()
-        
-        _ = publishSubject2.subscribe(onNext:{
-            print($0)
-        }).disposed(by: bag)
-        
-        publishSubject2.onNext(1)
-        publishSubject2.onNext(2)
-        publishSubject2.onNext(6)
-        publishSubject2.onNext(3)
-        publishSubject2.onNext(10)
-        print("\n")
-        
-//        let dataSource = Observable.just([1, 2, 3, 4, 5])
-//        let filterSource = PublishSubject<Int>()
+//        let publishSubject2 = PublishSubject<Int>()
 //
-//        Observable
-//            .combineLatest(dataSource, filterSource) { data, filter in data.filter { $0 != filter } }
-//            .subscribe(onNext: { print($0) })
-//
-//        filterSource.onNext(3)
-//        filterSource.onNext(2)
-//
-//        print("Done")
+//        _ = publishSubject2.subscribe(onNext:{
+//            print($0)
+//        }).disposed(by: bag)
+//        publishSubject2.onNext(1)
+//        publishSubject2.onNext(2)
+//        publishSubject2.onNext(6)
+//        publishSubject2.onNext(3)
+//        publishSubject2.onNext(10)
+//        print("\n")
+        
+        let dataSource = Observable.just([1, 2, 3, 4, 5])
+        let filterSource = PublishSubject<Int>()
+
+        Observable
+            .combineLatest(dataSource, filterSource) { data, filter in data.filter { $0 > 3 } }
+            .subscribe(onNext: { print($0) })
+
+        filterSource.onNext(10)
+        filterSource.onNext(2)
+
+        print("Done")
     }
 }
 
